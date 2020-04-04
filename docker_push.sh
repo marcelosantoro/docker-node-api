@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# IT WORKS ;)
+
 # Parameters
 REGISTRY_URL=${AWS_ACCOUNT_ID}.dkr.ecr.${EB_REGION}.amazonaws.com
 SOURCE_IMAGE="${DOCKER_REPO}"
