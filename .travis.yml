@@ -16,9 +16,9 @@ after_success:
 - pip install --user awscli
 - export PATH=$PATH:$HOME/.local/bin
 - eval $(aws ecr get-login-password --region us-east-1)
-#- docker build -t docker-node-api .
-#- docker tag docker-node-api:latest 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
-#- docker push 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
+- docker build -t docker-node-api .
+- docker tag docker-node-api:latest 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
+- docker push 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
 
 env:
   global:
