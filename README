@@ -1,0 +1,5 @@
+# Para subir o Ambiente em modo DEV
+sudo docker-compose -f docker-compose-dev.yml up --build 
+
+# Para subir o Ambiente em modo PROD
+sudo docker-compose -f docker-compose-prod.yml up --build 

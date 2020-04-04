@@ -1,0 +1,19 @@
+# DEVELOPMENT VERSION
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+# Copy All Files :)
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
+
+# sudo docker build -f Dockerfile.dev .
+# Successfully built 07f4709dd24c
+# sudo docker run -ti -p 3000:3000 ID_GERADO
