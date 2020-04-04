@@ -12,10 +12,10 @@ script:
 after_success:
     - docker --version
     - pip install --user awscli
-    - export PATH=$PATH:$HOME/.local/bin # Put AWS in the Path :)
+    - export PATH=$PATH:$HOME/.local/bin # Put AWS in the Path :)s
     - eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
 
     - docker build -t docker-node-api .
     - docker tag docker-node-api:latest 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
     - docker push 028953928914.dkr.ecr.us-east-1.amazonaws.com/docker-node-api:latest
-    
+
