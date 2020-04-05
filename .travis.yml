@@ -3,7 +3,6 @@ services:
   - docker
 
 before_install:
-  #- "./ecr_credentials.sh"
   - echo "before install"
 
 install:
