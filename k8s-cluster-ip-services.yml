@@ -9,3 +9,8 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
+
+
+# Command to Apply on minikube - development only
+# kubectl apply -f k8s-cluster-ip-services.yml 
+#

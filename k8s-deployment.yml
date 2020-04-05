@@ -17,3 +17,8 @@ spec:
             image: marcelosantoro/docker-node-api:v1.0.0
             ports:
               - containerPort: 3000
+
+
+# Command to Apply on minikube - development only
+# kubectl apply -f k8s-deployment.yml
+#
