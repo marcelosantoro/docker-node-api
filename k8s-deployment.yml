@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: docker-node-api-deployment
+spec:
+    replicas: 2
+    selector:
+      matchLabels:     
+        component: apitest
+    template:
+      metadata:         
+        labels:
+          component: apitest
+      spec:
+        containers:
+          - name: docker-node-api
+            image: marcelosantoro/docker-node-api:v1.0.0
+            ports:
+              - containerPort: 3000
