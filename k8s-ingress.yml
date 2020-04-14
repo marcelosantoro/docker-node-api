@@ -12,7 +12,7 @@ spec:
           - path: /?(.*)
             backend:
               serviceName: docker-node-api-cluster-ip-service
-              servicePort: 3000
+              servicePort: 80
 
 # Command to Apply on minikube - development only
 # kubectl apply -f k8s-ingress.yml

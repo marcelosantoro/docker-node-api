@@ -16,7 +16,7 @@ spec:
           - name: docker-node-api
             image: marcelosantoro/docker-node-api:v1.0.0
             ports:
-              - containerPort: 3000
+              - containerPort: 80
 
 
 # Command to Apply on minikube - development only

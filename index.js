@@ -143,4 +143,4 @@ app.delete('/api', function(req, res){
     });
 });
 
-app.listen(3000, function(){ console.log('Kubernetes API REST rodando na porta 3000') });
+app.listen(80, function(){ console.log('Kubernetes API REST rodando na porta 80') });
