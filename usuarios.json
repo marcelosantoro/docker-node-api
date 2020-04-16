@@ -1,1 +1,5 @@
-{"usuarios":[{"usuario_id":1,"nome":"Marcelo Santoro","site":"Site 1"},{"usuario_id":2,"nome":"Lucas","site":"Site 2"},{"usuario_id":3,"nome":"Mateus","site":"Site 3"},{"usuario_id":4,"nome":"Sandro","site":"Site 4"}]}
+{"usuarios":[{"usuario_id":1,"nome":"Marcelo Santoro","site":"Site 1"},{"usuario_id":2,"nome":"Lucas","site":"Site 2"},
+    {"usuario_id":3,"nome":"Mateus","site":"Site 3"},
+    {"usuario_id":4,"nome":"Sandro","site":"Site 4"},
+    {"usuario_id":5,"nome":"AutoDeploy","site":"Site 5"}
+    ]}
