@@ -10,7 +10,7 @@ AWS_ASSUME_ROLE=false
 IMAGE=false
 MIN=false
 MAX=false
-TIMEOUT=90
+TIMEOUT=20
 VERBOSE=false
 TAGVAR=false
 TAGONLY=""
@@ -413,11 +413,11 @@ function waitForGreenDeployment {
     else
       sleep $every
       i=$(( $i + $every ))
-      echo "Sleeping....${every}   ${i} ..."
     fi
   done
 
-  echo "SUCCESS ? - ${DEPLOYMENT_SUCCESS}"
+  #echo "SUCCESS ? - ${DEPLOYMENT_SUCCESS}"
+  echo "Service deployment successful."
 
   if [[ "${DEPLOYMENT_SUCCESS}" != "true" ]]; then
     if [[ "${ENABLE_ROLLBACK}" != "false" ]]; then
