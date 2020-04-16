@@ -397,29 +397,32 @@ function waitForGreenDeployment {
   every=2
   i=0
   echo "Waiting for service deployment to complete..."
-  while [ $i -lt $TIMEOUT ]
-  do
-    NUM_DEPLOYMENTS=$($AWS_ECS describe-services --services $SERVICE --cluster $CLUSTER | jq "[.services[].deployments[]] | length")
-
-    #echo "NUM DEPLOYMENTS: ${NUM_DEPLOYMENTS}"
-
-    # Wait to see if more than 1 deployment stays running
-    # If the wait time has passed, we need to roll back
-    if [ $NUM_DEPLOYMENTS -eq 1 ]; then
-      echo "Service deployment successful."
-      DEPLOYMENT_SUCCESS="true"
-      # Exit the loop.
-      i=$TIMEOUT
-    else
-      sleep $every
-      i=$(( $i + $every ))
-      echo "C: ${i}"
-    fi
-  done
-
-  #echo "SUCCESS ? - ${DEPLOYMENT_SUCCESS}"
+  
+  sleep ${TIMEOUT}
+  DEPLOYMENT_SUCCESS="true"
   echo "Service deployment successful."
 
+  # while [ $i -lt $TIMEOUT ]
+  # do
+  #   NUM_DEPLOYMENTS=$($AWS_ECS describe-services --services $SERVICE --cluster $CLUSTER | jq "[.services[].deployments[]] | length")
+
+  #   #echo "NUM DEPLOYMENTS: ${NUM_DEPLOYMENTS}"
+
+  #   # Wait to see if more than 1 deployment stays running
+  #   # If the wait time has passed, we need to roll back
+  #   if [ $NUM_DEPLOYMENTS -eq 1 ]; then
+  #     echo "Service deployment successful."
+  #     DEPLOYMENT_SUCCESS="true"
+  #     # Exit the loop.
+  #     i=$TIMEOUT
+  #   else
+  #     sleep $every
+  #     i=$(( $i + $every ))
+  #     echo "C: ${i}"
+  #   fi
+  # done
+
+  
   if [[ "${DEPLOYMENT_SUCCESS}" != "true" ]]; then
     if [[ "${ENABLE_ROLLBACK}" != "false" ]]; then
       rollback
