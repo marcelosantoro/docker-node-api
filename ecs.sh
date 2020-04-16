@@ -401,6 +401,8 @@ function waitForGreenDeployment {
   do
     NUM_DEPLOYMENTS=$($AWS_ECS describe-services --services $SERVICE --cluster $CLUSTER | jq "[.services[].deployments[]] | length")
 
+    echo "NUM DEPLOYMENTS: ${NUM_DEPLOYMENTS}"
+
     # Wait to see if more than 1 deployment stays running
     # If the wait time has passed, we need to roll back
     if [ $NUM_DEPLOYMENTS -eq 1 ]; then
@@ -411,8 +413,11 @@ function waitForGreenDeployment {
     else
       sleep $every
       i=$(( $i + $every ))
+      echo "Sleeping....${every}   ${i} ..."
     fi
   done
+
+  echo "SUCCESS ? - ${DEPLOYMENT_SUCCESS}"
 
   if [[ "${DEPLOYMENT_SUCCESS}" != "true" ]]; then
     if [[ "${ENABLE_ROLLBACK}" != "false" ]]; then
