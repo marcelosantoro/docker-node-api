@@ -5,7 +5,7 @@ VERSION="3.4.0"
 CLUSTER=false
 SERVICE=false
 TASK_DEFINITION=false
-MAX_DEFINITIONS=0
+MAX_DEFINITIONS=1
 AWS_ASSUME_ROLE=false
 IMAGE=false
 MIN=false
@@ -358,8 +358,14 @@ function updateService() {
                         FAMILY_PREFIX=${FAMILY_PREFIX%*:[0-9]*}
                         TASK_REVISIONS=`$AWS_ECS list-task-definitions --family-prefix $FAMILY_PREFIX --status ACTIVE --sort ASC`
                         NUM_ACTIVE_REVISIONS=$(echo "$TASK_REVISIONS" | jq ".taskDefinitionArns|length")
+                        
+                        echo "FAMILY PREFIX: ${FAMILY_PREFIX}"
+                        echo "TASK REVISIONS: ${TASK_REVISIONS}"
+                        echo "NUM ACTIVE REVISIONS: ${NUM_ACTIVE_REVISIONS}"
+
                         if [[ $NUM_ACTIVE_REVISIONS -gt $MAX_DEFINITIONS ]]; then
                             LAST_OUTDATED_INDEX=$(($NUM_ACTIVE_REVISIONS - $MAX_DEFINITIONS - 1))
+                            echo "LAST OUTDATED INDEX: ${LAST_OUTDATED_INDEX}"
                             for i in $(seq 0 $LAST_OUTDATED_INDEX); do
                                 OUTDATED_REVISION_ARN=$(echo "$TASK_REVISIONS" | jq -r ".taskDefinitionArns[$i]")
 
