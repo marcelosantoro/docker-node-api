@@ -398,7 +398,7 @@ function waitForGreenDeployment {
   i=0
   echo "Waiting for service deployment to complete..."
 
-  sleep ${TIMEOUT}
+  sleep 10
   DEPLOYMENT_SUCCESS="true"
   echo "Service deployment successful."
 
