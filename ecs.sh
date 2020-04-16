@@ -10,7 +10,7 @@ AWS_ASSUME_ROLE=false
 IMAGE=false
 MIN=false
 MAX=false
-TIMEOUT=10
+TIMEOUT=90
 VERBOSE=false
 TAGVAR=false
 TAGONLY=""
@@ -397,7 +397,7 @@ function waitForGreenDeployment {
   every=2
   i=0
   echo "Waiting for service deployment to complete..."
-  
+
   sleep ${TIMEOUT}
   DEPLOYMENT_SUCCESS="true"
   echo "Service deployment successful."
