@@ -404,6 +404,7 @@ function waitForGreenDeployment {
   i=0
   echo "Waiting for service deployment to complete..."
 
+  # Prov
   sleep 10
   DEPLOYMENT_SUCCESS="true"
   echo "Service deployment successful."
