@@ -35,7 +35,21 @@ function getDate(){
 app.get('/', function(req, res){
     console.log(getDate()+" - Req IP: "+req.ip+" - EndPoint / - GET")
     result = "Acesso invalido ao endpoint /";
-    var response = {status: 'Nao Autorizado', resultado: result};
+
+    //Environment Vars
+    var ENVIRONMENT = process.env.ENVIRONMENT
+    var MONGO_USER = process.env.MONGO_USER
+    var MONGO_PASS = process.env.MONGO_PASS
+    var URL_API = process.env.URL_API
+    
+    var envVars = {
+        ENVIRONMENT: ENVIRONMENT,
+        MONGO_USER: MONGO_USER,
+        MONGO_PASS: MONGO_PASS,
+        URL_API: URL_API
+    };
+
+    var response = {status: 'Nao Autorizado', resultado: result, environment_vars: envVars};
     res.json(response);
 });
 
